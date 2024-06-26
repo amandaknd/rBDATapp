@@ -1,0 +1,24 @@
+Package: rBDATapp
+Title: An Amazing Shiny App
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Christian",
+           family = "Vonderach",
+           role = c("aut", "cre"),
+           email = "your@email.com")
+Description: The package provides functionalities from the rBDAT package
+License: BSD_2_clause + file LICENSE
+Imports: 
+    config (>= 0.3.2),
+    golem (>= 0.4.1),
+    shiny (>= 1.8.1.1),
+    shinyjs,
+    dplyr,
+    rBDAT,
+    tidyverse,
+    tidyr,
+    TapeS,
+    pkgload
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.1
