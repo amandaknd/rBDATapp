@@ -15,6 +15,7 @@ Imports:
     shinyjs,
     dplyr,
     rBDAT,
+    shinyBS,
     tidyverse,
     tidyr,
     TapeS,
