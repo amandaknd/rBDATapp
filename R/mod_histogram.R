@@ -60,7 +60,7 @@ mod_histogram_ui <- function(id){
 #' histogram Server Functions
 #'
 #' @noRd
-mod_histogram_server <- function(id, data_input){
+mod_histogram_server <- function(id, data_input, selected_radio){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     require(TapeS)
@@ -68,6 +68,11 @@ mod_histogram_server <- function(id, data_input){
 
     data_upload <- reactive({
       if(!is.null(data_input()$df)){
+        observeEvent(selected_radio(),{
+          updateRadioButtons(session,"components", selected = selected_radio())
+        })
+        
+        #================================= to be fixed ^
         df <- data_input()
         df <- df$df
         sort <- list(lX = input$lx, Sokz = input$Sokz, Az = input$Az,

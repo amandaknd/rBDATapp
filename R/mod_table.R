@@ -42,11 +42,17 @@ mod_table_ui <- function(id){
 #' table Server Functions
 #'
 #' @noRd
-mod_table_server <- function(id, df, data_input){
+mod_table_server <- function(id, df, data_input, selected_radiob){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
 
     output$table <- renderTable({df()$df})#end table
+    
+    observeEvent(input$Columns,{
+      if("comp" %in% input$Columns){
+        selected_radiob("Components")
+      }
+    })
 
     #table for download
     selected_columns <- reactive({
@@ -56,7 +62,7 @@ mod_table_server <- function(id, df, data_input){
       if(length(input$Columns)==0){
         return(NULL)
       }else if("comp" %in% input$Columns && ncol(data)<(17+fixN)){
-        showNotification("ERROR: This option is only valid when 'Components' is selected", type = "error")
+        showNotification("Change in Biomass component estimates", type = "warning")
       }else {
         columns <- numeric(0)
 

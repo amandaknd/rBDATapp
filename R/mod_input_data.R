@@ -28,16 +28,22 @@ mod_input_data_ui <- function(id){
                     )),
 
           radioButtons(ns("colseparator"),"Column separator:", choices = c(";",",",":"), selected=";",inline=TRUE),
-          radioButtons(ns("decseparator"),"Decimal separator:",choices = c(".",","), selected=",",inline=TRUE)
-        ),#end sidebar panel
-        mainPanel(
+          radioButtons(ns("decseparator"),"Decimal separator:",choices = c(".",","), selected=",",inline=TRUE),
           h6(strong("Required variables for file upload:")),
           h6("spp: numeric, 1 <= spp <= 36"),
           h6("D1: numeric, first measured diameter [cm], usually at 1.3m"),
-          h6("H1: numeric, measuring height of D1; defaults to zero, i.e. 1.3m"),
           h6("H: numeric, tree height [m]"),
+          h6(strong("Optional variables:")),
+          h6("H1: numeric, measuring height of D1; defaults to zero, i.e. 1.3m"),
           h6("D2: numeric, second/upper diameter"),
           h6("H2: numeric, measuring height of second/upper diameter")
+        ),#end sidebar panel
+        mainPanel(
+          sidebarLayout(
+            sidebarPanel(strong("Preview of the uploaded data:"),
+                         tableOutput(ns("prev_table"))),
+            mainPanel()
+          )# end 2nd sidebarLayout
         )#end main panel
       )#end sidebar layout
 
@@ -67,6 +73,8 @@ mod_input_data_server <- function(id){
       list(df=df, sep = input$colseparator, dec= input$decseparator, name = input$target_upload$name)
 
     })
+    
+    output$prev_table <- renderTable({head(data_input()$df)})
 
     return(reactive(data_input()))
 

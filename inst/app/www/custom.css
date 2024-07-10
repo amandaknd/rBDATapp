@@ -1,0 +1,21 @@
+.footer{
+	background-color: #ebfcf1;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: normal 12px sans-serif;
+	padding: 5px;
+	margin-top: 15px;
+} 
+
+.header{
+	background-color: #ebfcf1;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: normal 12px sans-serif;
+	padding: 5px;
+	margin-top: 15px;
+} 

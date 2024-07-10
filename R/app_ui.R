@@ -13,6 +13,8 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
+    tags$header(tags$style(type = 'text/css','.navbar { margin-bottom: 0px; }'),
+                includeCSS(app_sys("app/www/custom.css"))),
     # Your application UI logic
     fluidPage(
       navbarPage(title = "Inventory data", windowTitle = "rBDATapp",
