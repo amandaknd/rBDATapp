@@ -21,9 +21,9 @@ app_server <- function(input, output, session) {
 
 
   # Your application server logic
-  selected_radio <- reactiveVal()
+  selected_box <- reactiveVal()
   data_input <- mod_input_data_server("input_data_1")
-  df <- mod_histogram_server("histogram_1", data_input, selected_radio)
-  mod_table_server("table_1", df, data_input, selected_radio)
+  df <- mod_histogram_server("histogram_1", data_input, selected_box)
+  mod_table_server("table_1", df, data_input, selected_box)
   mod_notation_server("notation_1")
 }

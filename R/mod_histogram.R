@@ -17,7 +17,7 @@ mod_histogram_ui <- function(id){
         sidebarPanel(
           fluidRow(
             uiOutput(ns("num_inputs")),
-            radioButtons(ns("components"),"Biomass component estimates:",choices = c("AGB","Components"), selected="AGB",inline=TRUE)
+            #radioButtons(ns("components"),"Biomass component estimates:",choices = c("AGB","Components"), selected="AGB",inline=TRUE)
           )
         ),#end sidebar panel
         mainPanel(
@@ -39,7 +39,7 @@ mod_histogram_ui <- function(id){
 #' histogram Server Functions
 #'
 #' @noRd
-mod_histogram_server <- function(id, data_input, selected_radio){
+mod_histogram_server <- function(id, data_input, selected_box){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
     require(TapeS)
@@ -47,9 +47,8 @@ mod_histogram_server <- function(id, data_input, selected_radio){
     
     output$num_inputs <- renderUI({
       tags$span(
-        column(3, shinyBS::tipify(numericInput(ns("lx"), "lx:",0, min = 0), title = "Length of unusable wood at stem foot [m], defaults to 0 (X-Holz)", trigger = "hover")),
-        #column(3, numericInput(ns("lx"), "lx:",0, min = 0), inline=TRUE,
-        #       shinyBS::bsTooltip(ns("lx"), title = "Length of unusable wood at stem foot [m], defaults to 0 (X-Holz)", trigger = "hover")),
+        column(3, numericInput(ns("lx"), "lx:",0, min = 0), inline=TRUE,
+               shinyBS::bsTooltip(ns("lx"), title = "Length of unusable wood at stem foot [m], defaults to 0 (X-Holz)", trigger = "hover")),
         column(3, numericInput(ns("Zsh"), "Zsh:",0, min = 0), inline=TRUE,
                shinyBS::bsTooltip(ns("Zsh"), title = "Minimum cutting diameter under bark for stem wood [cm], defaults to 0, using parameter Az if estimated length < maximum length (i.e. 20m)", trigger = "hover")),
         column(3, numericInput(ns("Zab"), "Zab:",0, min = 0), inline=TRUE,
@@ -76,12 +75,9 @@ mod_histogram_server <- function(id, data_input, selected_radio){
     data_upload <- reactive({
       if(!is.null(data_input()$df)){
         
-        observeEvent(selected_radio(),{
-          updateRadioButtons(session,"components", selected = selected_radio())
-        })
-        
         df <- data_input()
         df <- df$df
+        
         sort <- list(lX = input$lx, Sokz = input$Sokz, Az = input$Az,
                      fixN = input$fixN, fixZ = input$fixZ, fixL = input$fixL,
                      fixA = input$fixA, fixR = input$fixR, Hsh = input$Hsh,
@@ -92,7 +88,7 @@ mod_histogram_server <- function(id, data_input, selected_radio){
         tree$Hsh <- ifelse(tree$spp<15, 0, tree$Hsh)
         assortment <- rBDAT::getAssortment(tree, value = "merge")
         assortment2 <- rBDAT::getAssortment(tree, value = "Vol")
-        df <- assortment2
+        df <- cbind(df, assortment2)
         
         #Get volumes for fixN
         if(input$fixN !=0){
@@ -107,8 +103,7 @@ mod_histogram_server <- function(id, data_input, selected_radio){
         df$Efm <- df$Vfm - df$EV
         df$Biomass <- rBDAT::getBiomass(tree)
         
-        
-        if(input$components=="Components"){
+        if(is.null(selected_box())==F){
           tpr <- TapeS::bdat_as_tprtrees(tree)
           cmp <- TapeS::tprBiomass(tpr, component = "all")
           df <- cbind(df,cmp)
