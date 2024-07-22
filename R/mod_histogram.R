@@ -46,7 +46,8 @@ mod_histogram_server <- function(id, data_input, selected_box){
     library(dplyr)
     
     output$num_inputs <- renderUI({
-      tags$span(
+      #tags$span(
+      tagList(
         column(3, numericInput(ns("lx"), "lx:",0, min = 0), inline=TRUE,
                shinyBS::bsTooltip(ns("lx"), title = "Length of unusable wood at stem foot [m], defaults to 0 (X-Holz)", trigger = "hover")),
         column(3, numericInput(ns("Zsh"), "Zsh:",0, min = 0), inline=TRUE,

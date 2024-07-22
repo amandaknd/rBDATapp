@@ -50,7 +50,7 @@ mod_table_server <- function(id, df, data_input, selected_box){
     
     #table for download
     selected_columns <- reactive({
-      data <- df()$df
+      tryCatch({data <- df()$df
       fixN <- df()$fixN
       
       if(length(input$Columns)==0){
@@ -75,7 +75,10 @@ mod_table_server <- function(id, df, data_input, selected_box){
         
         df <- data[,c(1:4,columns), drop =F]
       }
-      return(df)
+      return(df)},
+      error = function(e) {
+        # Code to handle errors
+      })
       
     })
     
