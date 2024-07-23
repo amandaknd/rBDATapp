@@ -46,8 +46,7 @@ mod_histogram_server <- function(id, data_input, selected_box){
     library(dplyr)
     
     output$num_inputs <- renderUI({
-      #tags$span(
-      tagList(
+      tags$span(
         column(3, numericInput(ns("lx"), "lx:",0, min = 0), inline=TRUE,
                shinyBS::bsTooltip(ns("lx"), title = "Length of unusable wood at stem foot [m], defaults to 0 (X-Holz)", trigger = "hover")),
         column(3, numericInput(ns("Zsh"), "Zsh:",0, min = 0), inline=TRUE,
@@ -117,11 +116,16 @@ mod_histogram_server <- function(id, data_input, selected_box){
     })
     
     output$histPlot <- renderPlot({
+      tryCatch({
       data <- data_upload()
       df <- data$df
       if(!is.null(df)){
         hist(df[, input$yhat], main=input$yhat, freq=TRUE, xlab = "Volume")
       }
+      },
+      error = function(e) {
+        # Code to handle errors
+      })
     })# end histogram
     
     #TAPER PLOT
@@ -137,6 +141,7 @@ mod_histogram_server <- function(id, data_input, selected_box){
     }
     
     output$taperPlot <- renderPlot({
+      tryCatch({
       data <- data_upload()
       tree <- data$tree
       assort <- data$assort
@@ -146,6 +151,11 @@ mod_histogram_server <- function(id, data_input, selected_box){
       if(!is.null(tree) && currentPlotIndex() <= ranges){
         generatePlot(tree, assort, currentPlotIndex(), n)
       }
+      
+      },
+      error = function(e) {
+        # Code to handle errors
+      })
     })
     
     #return(reactive(data_upload()$df))
