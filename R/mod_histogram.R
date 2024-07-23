@@ -47,28 +47,17 @@ mod_histogram_server <- function(id, data_input, selected_box){
     
     output$num_inputs <- renderUI({
       tags$span(
-        column(3, numericInput(ns("lx"), "lx:",0, min = 0), inline=TRUE,
-               shinyBS::bsTooltip(ns("lx"), title = "Length of unusable wood at stem foot [m], defaults to 0 (X-Holz)", trigger = "hover")),
-        column(3, numericInput(ns("Zsh"), "Zsh:",0, min = 0), inline=TRUE,
-               shinyBS::bsTooltip(ns("Zsh"), title = "Minimum cutting diameter under bark for stem wood [cm], defaults to 0, using parameter Az if estimated length < maximum length (i.e. 20m)", trigger = "hover")),
-        column(3, numericInput(ns("Zab"), "Zab:",0, min = 0), inline=TRUE,
-               shinyBS::bsTooltip(ns("Zab"), title = "Minimum cutting diameter under bark for top segment [cm], defaults to 0, i.e. 14cm under bark", trigger = "hover")),
-        column(3, numericInput(ns("Sokz"), "Sokz:", 1, min = 0, max = 2),
-               shinyBS::bsTooltip(ns("Sokz"), title = "Assortment calculation, 0 - no assortment, 1 - Mid diameter (Mittenstärke), 2 - Heilbronner Sortierung. Defaults to 1", trigger = "hover")),
-        column(3, numericInput(ns("Az"), "Az:",0, min = 0),
-               shinyBS::bsTooltip(ns("Az"), title = "Minimum cutting diameter over bark [cm]. Defaults to 0. Uses an exponential function given DBH", trigger = "hover")),
-        column(3, numericInput(ns("fixN"), "fixN:",0, min = 0),
-               shinyBS::bsTooltip(ns("fixN"), title = "Number of fixed length assortments at stem foot, defaults to 0 (no fixed length assortments, irrespective of other fixed parameters)", trigger = "hover")),
-        column(3, numericInput(ns("fixZ"), "fixZ:",0, min = 0),
-               shinyBS::bsTooltip(ns("fixZ"), title = "Mininum diameter under bark for fixed length assortment at stem foot, defaults to 0", trigger = "hover")),
-        column(3, numericInput(ns("fixL"), "fixL:",0, min = 0),
-               shinyBS::bsTooltip(ns("fixL"), title = "Length of fixed length assortment at stem foot, defaults to 0", trigger = "hover")),
-        column(3, numericInput(ns("fixA"), "fixA:",0, min = 0),
-               shinyBS::bsTooltip(ns("fixA"), title = "Fixed length assortement add-on in [cm], defaults to 0", trigger = "hover")),
-        column(3, numericInput(ns("fixR"), "fixR:",0, min = 0),
-               shinyBS::bsTooltip(ns("fixR"), title = "Fixed length assortement add-on in [%], defaults to 0", trigger = "hover")),
-        column(3, numericInput(ns("Hsh"), "Hsh:",0, min = 0),
-               shinyBS::bsTooltip(ns("Hsh"), title = "Maximum height of sawlog quality", trigger = "hover"))
+        column(3, shinyBS::tipify(numericInput(ns("lx"), "lx:",0, min = 0), title = "Length of unusable wood at stem foot [m], defaults to 0 (X-Holz)", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("Zsh"), "Zsh:",0, min = 0), title = "Minimum cutting diameter under bark for stem wood [cm], defaults to 0, using parameter Az if estimated length < maximum length (i.e. 20m)", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("Zab"), "Zab:",0, min = 0), title = "Minimum cutting diameter under bark for top segment [cm], defaults to 0, i.e. 14cm under bark", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("Sokz"), "Sokz:", 1, min = 0, max = 2), title = "Assortment calculation, 0 - no assortment, 1 - Mid diameter (Mittenstärke), 2 - Heilbronner Sortierung. Defaults to 1", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("Az"), "Az:",0, min = 0), title = "Minimum cutting diameter over bark [cm]. Defaults to 0. Uses an exponential function given DBH", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("fixN"), "fixN:",0, min = 0), title = "Number of fixed length assortments at stem foot, defaults to 0 (no fixed length assortments, irrespective of other fixed parameters)", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("fixZ"), "fixZ:",0, min = 0), title = "Mininum diameter under bark for fixed length assortment at stem foot, defaults to 0", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("fixL"), "fixL:",0, min = 0), title = "Length of fixed length assortment at stem foot, defaults to 0", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("fixA"), "fixA:",0, min = 0), title = "Fixed length assortement add-on in [cm], defaults to 0", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("fixR"), "fixR:",0, min = 0), title = "Fixed length assortement add-on in [%], defaults to 0", trigger = "hover")),
+        column(3, shinyBS::tipify(numericInput(ns("Hsh"), "Hsh:",0, min = 0), title = "Maximum height of sawlog quality", trigger = "hover"))
       )
     })
     
