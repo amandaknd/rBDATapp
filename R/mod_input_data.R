@@ -9,7 +9,7 @@
 #' @importFrom shiny NS tagList
 mod_input_data_ui <- function(id){
   ns <- NS(id)
-
+  
   tagList(
     fluidRow(
       h2(strong(("Tree Volume and Biomass estimation by rBDAT"))),
@@ -20,13 +20,17 @@ mod_input_data_ui <- function(id){
     fluidRow(
       sidebarLayout(
         sidebarPanel(
+          h6("If you upload data here, this data will be processed on servers in the USA. Don't upload if this is a concern. No data is collected by the App itself and shinyapps.io state, that uploaded data is not stored permanently.
+             Further information can be found at"),
+          tags$a(href="https://docs.posit.co/shinyapps.io/guide/security_and_compliance/index.html", "Security and compliance"),
+          h6(),
           fileInput(ns('target_upload'), 'Select csv/txt file to upload',
                     accept = c(
                       'text/csv',
                       'text/comma-separated-values',
                       '.csv'
                     )),
-
+          
           radioButtons(ns("colseparator"),"Column separator:", choices = c(";",",",":"), selected=";",inline=TRUE),
           radioButtons(ns("decseparator"),"Decimal separator:",choices = c(".",","), selected=",",inline=TRUE),
           h6(strong("Required variables for file upload:")),
@@ -46,10 +50,10 @@ mod_input_data_ui <- function(id){
           )# end 2nd sidebarLayout
         )#end main panel
       )#end sidebar layout
-
+      
     )#end fluid row
-
-
+    
+    
   )#end taglist
 }
 
@@ -59,28 +63,28 @@ mod_input_data_ui <- function(id){
 mod_input_data_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-
+    
     data_input <- reactive({
       inFile <- input$target_upload
       if(is.null(inFile)){
         #return(NULL)
         number <- 15
-        df <- data.frame(spp = rep(c(15,1), number), D1 = seq(20, 50, length.out = number),
+        df <- data.frame(spp = rep(c(1,15), number), D1 = seq(20, 50, length.out = number),
                          H = seq(15, 40, length.out = number) )
       }else{
         df <- read.csv(inFile$datapath, header = TRUE, sep = input$colseparator, dec= input$decseparator)
       }
       list(df=df, sep = input$colseparator, dec= input$decseparator, name = input$target_upload$name)
-
+      
     })
     
     output$prev_table <- renderTable({head(data_input()$df)})
-
+    
     return(reactive(data_input()))
-
-
+    
+    
   })
-
+  
 }
 
 ## To be copied in the UI

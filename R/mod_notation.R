@@ -9,14 +9,18 @@
 #' @importFrom shiny NS tagList
 mod_notation_ui <- function(id){
   ns <- NS(id)
+  
+  
   tagList(
     fluidRow(
-      strong("Table Notation"),
-      tableOutput(ns("def_table")),
-      
-      strong("Components notation"),
-      tableOutput(ns("comp_table"))
+        strong("Table Notation"),
+        tableOutput(ns("def_table")),
+
+        strong("Components notation"),
+        tableOutput(ns("comp_table"))
+        
     )
+
   )#end taglist
 }
 

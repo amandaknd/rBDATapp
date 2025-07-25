@@ -15,9 +15,9 @@ mod_table_ui <- function(id){
         sidebarPanel(
           checkboxGroupInput(ns("Columns"),"Select variables to download",
                              choices = c("Standing stock" = "stock",
-                                         "Assortment" = "assort",
-                                         "Aboveground-biomass" = "agb",
-                                         "Component biomass" = "comp"), selected = c("stock", "assort", "agb", "comp") ),
+                               "Assortment" = "assort",
+                               "Aboveground-biomass" = "agb",
+                               "Component biomass" = "comp"), selected = c("stock", "assort", "agb", "comp") ),
           br(),
           strong("Download results"),
           downloadButton(ns("downloadData"), "Download")
@@ -26,11 +26,11 @@ mod_table_ui <- function(id){
           tableOutput(ns("download_table")),
           style = "height:400px; overflow-y: scroll;overflow-x: scroll;"
         )#end main panel
-        
+
       )#end sidebar layout
-      
+
     )#end fluid row
-    
+
   )
 }
 
@@ -47,10 +47,10 @@ mod_table_server <- function(id, df, data_input, selected_box){
       }
     })
     
-    
+
     #table for download
     selected_columns <- reactive({
-      tryCatch({data <- df()$df
+      data <- df()$df
       fixN <- df()$fixN
       
       if(length(input$Columns)==0){
@@ -59,7 +59,7 @@ mod_table_server <- function(id, df, data_input, selected_box){
         showNotification("Change in Biomass component estimates", type = "warning")
       }else {
         columns <- numeric(0)
-        
+
         if("stock" %in% input$Columns){
           columns <- 5
         }
@@ -72,19 +72,16 @@ mod_table_server <- function(id, df, data_input, selected_box){
         if("comp" %in% input$Columns){#  && (input$components=="Components" || input$components=="Komponenten")){
           columns <- c(columns, (14+fixN):ncol(data) )
         }
-        
+
         df <- data[,c(1:4,columns), drop =F]
       }
-      return(df)},
-      error = function(e) {
-        # Code to handle errors
-      })
-      
+      return(df)
+
     })
-    
-    
+
+
     output$download_table <- renderTable({ selected_columns() })
-    
+
     output$downloadData <- downloadHandler(
       filename = function(){
         flnm <- data_input()
@@ -97,7 +94,7 @@ mod_table_server <- function(id, df, data_input, selected_box){
         write.table(df, file, row.names = FALSE, sep = data_input()$sep, dec = data_input()$dec)
       }
     )
-    
+
   })
 }
 

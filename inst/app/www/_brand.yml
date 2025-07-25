@@ -1,0 +1,241 @@
+meta:
+  name:
+    short: FVA
+    full: Forstliche Versuchs- und Forschungsanstalt Baden-Württemberg
+  link:
+    home: https://www.fva-bw.de
+    mastodon: https://bawü.social/@FVABW
+    instagram: https://www.instagram.com/fva_bw
+    youtube: https://www.youtube.com/channel/UCxyaUkQwqig2zL_JG9OotCg
+    linkedin: https://www.linkedin.com/company/fva-bw
+  description: |
+    Die FVA ist als Forschungseinrichtung des Landes für den Wald und die Forstwirtschaft in Baden-Württemberg zuständig. Sie übernimmt Aufgaben, die für die gesamte Gesellschaft wichtig sind. Forschung, Monitoring, Fortbildung und die Beratung von Politik, Verwaltung und Betrieben machen den Kern unserer Arbeit aus.
+  founded: 1958
+  
+color:
+  palette:
+    # The Simple Palettes are from FVA Website or FVA Design Proposal
+    # The Detailed Palettes are AI Created based on these values
+    #green
+    green-100: "#E3F3E9"
+    green-200: "#C8E7D4"
+    green-300: "#ACDBC0"
+    green-400: "#91D0AB"
+    green-500: "#6CBC83"
+    green-600: "#58A46E"
+    green-700: "#448B59"
+    green-800: "#307344"
+    green-900: "#1C5A2F"
+    
+    #brown
+    brown-100: "#F2E8E5"
+    brown-200: "#E5D1CB"
+    brown-300: "#D9BBB1"
+    brown-400: "#CCA497"
+    brown-500: "#A68072"
+    brown-600: "#86675C"
+    brown-700: "#664E45"
+    brown-800: "#46342F"
+    brown-900: "#261B19"
+    
+    #blue
+    blue-100: "#CCE5F3"
+    blue-200: "#99CCEA"
+    blue-300: "#66B2E0"
+    blue-400: "#3399D7"
+    blue-500: "#007AC9"
+    blue-600: "#0061A1"
+    blue-700: "#00487A"
+    blue-800: "#003052"
+    blue-900: "#00182B"
+    
+    #red
+    red-100: "#F7D6DC"
+    red-200: "#EEADB9"
+    red-300: "#E68596"
+    red-400: "#DD5C73"
+    red-500: "#A60D42"
+    red-600: "#850A35"
+    red-700: "#640828"
+    red-800: "#43051B"
+    red-900: "#21030D"
+    
+    #yellow
+    yellow-100: "#FAF4D8"
+    yellow-200: "#F5E9B1"
+    yellow-300: "#F0DF8A"
+    yellow-400: "#EBD463"
+    yellow-500: "#CCB608"
+    yellow-600: "#A39206"
+    yellow-700: "#7A6D05"
+    yellow-800: "#524903"
+    yellow-900: "#292402"
+    
+    #purple
+    purple-100: "#F4DBEB"
+    purple-200: "#E9B7D7"
+    purple-300: "#DE94C2"
+    purple-400: "#D370AE"
+    purple-500: "#B51E83"
+    purple-600: "#911867"
+    purple-700: "#6C124C"
+    purple-800: "#480C30"
+    purple-900: "#240618"
+    
+    #gray
+    gray-100: "#F2F2F2"
+    gray-200: "#DFDFDF"
+    gray-300: "#CCCCCC"
+    gray-400: "#BABABA"
+    gray-500: "#9D9D9D"
+    gray-600: "#7E7E7E"
+    gray-700: "#606060"
+    gray-800: "#414141"
+    gray-900: "#232323"
+    
+    #orange
+    orange-100: "#FEEDD8"
+    orange-200: "#FDDCB1"
+    orange-300: "#FCCB8A"
+    orange-400: "#FCBA63"
+    orange-500: "#F9A51B"
+    orange-600: "#C78315"
+    orange-700: "#956210"
+    orange-800: "#63410A"
+    orange-900: "#312105"
+    
+    #indigo
+    indigo-100: "#EAE4F9"
+    indigo-200: "#D5CAEF"
+    indigo-300: "#BFADF4"
+    indigo-400: "#AA91EA"
+    indigo-500: "#6610f2"
+    indigo-600: "#520DC2"
+    indigo-700: "#3d0a92"
+    indigo-800: "#290762"
+    indigo-900: "#140431"
+    
+    #pink
+    pink-100: "#FAD8E2"
+    pink-200: "#F5B1C6"
+    pink-300: "#F18AAA"
+    pink-400: "#EC638E"
+    pink-500: "#e83e8c"
+    pink-600: "#B83170"
+    pink-700: "#892454"
+    pink-800: "#591738"
+    pink-900: "#2A0A1C"
+    
+    #teal
+    teal-100: "#D6F4EB"
+    teal-200: "#ADE9D7"
+    teal-300: "#84DFC3"
+    teal-400: "#5BD4AF"
+    teal-500: "#20c997"
+    teal-600: "#19A37A"
+    teal-700: "#137D5E"
+    teal-800: "#0C5741"
+    teal-900: "#062225"
+    
+    #cyan
+    cyan-100: "#D6F3F8"
+    cyan-200: "#ADE7F1"
+    cyan-300: "#84DBEA"
+    cyan-400: "#5BCFE3"
+    cyan-500: "#17a2b8"
+    cyan-600: "#128295"
+    cyan-700: "#0E6271"
+    cyan-800: "#09414E"
+    cyan-900: "#05212A"
+    
+    # Simplified Palette
+    green: "#006E60" # FVA Green
+    green-light: "#6CBC83"
+    green-pale: "#7DC4A7"
+    green-bright: "#99CC00"
+    
+    brown: "#D9C6B0"
+    brown-light: "#A68072"
+    brown-dark: "#314259"
+    beige: "#ECE5DC"
+    
+    blue: "#0160AE"
+    blue-light: "#007AC9"
+    blue-dark: "#05476E"
+    
+    red: "#C50F50" 
+    red-light: "#E0BAB4"
+    red-dark: "#A60D42" 
+    
+    yellow: "#FEE00A"
+    yellow-light: "#FCFAE7" 
+    yellow-dark: "#CCB608"
+    
+    purple: "#B51E83"
+    purple-light: "#C77BA5" 
+    purple-dark: "#783551"
+    
+    black: "#000000"
+    white: "#FFFFFF"
+    gray: "#9D9D9D"
+    gray-dark: "#515151"
+    gray-light: "#DADADA"
+    
+    orange: "#F9A51B"
+    orange-light: "#FFC499" # Optional lighter shade
+    orange-dark: "#C67F00" # Optional darker shade
+    
+    # Others
+    indigo: "#6610f2"
+    pink: "#e83e8c"
+    teal: "#20c997"
+    cyan: "#17a2b8"
+  
+  # Define Basic Weblayout
+  foreground: black
+  background: white
+  primary: green
+  secondary: brown
+  tertiary: gray
+  success: green-light
+  info: cyan
+  warning: orange
+  danger: red
+  light: gray-light
+  dark: gray-dark
+
+typography:
+  base:
+    family: PT Sans
+    line-height: 1.25
+    
+  headings:
+    family: PT Sans
+    color: gray-dark
+    
+  monospace:
+    family: PT Sans
+    
+  link:
+    color: primary
+    decoration: none
+
+logo:
+  medium:
+    light: www/logo/LogoFVA_text.png
+    dark: www/logo/LogoFVA_weiss.png
+  large: www/logo/LogoFVA_weiss.png
+
+# Adapt callout and navbar to color palette
+defaults:
+  bootstrap:
+    defaults:
+      lang: de
+      title-block-header-color: $primary
+      navbar-bg: $brand-beige
+      navbar-fg: $primary
+      callout-color-note: $primary
+      callout-color-tip: $info
+      callout-color-caution: $warning
+      callout-color-warning: $danger
+      callout-color-important: $success

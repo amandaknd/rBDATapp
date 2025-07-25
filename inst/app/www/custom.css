@@ -7,7 +7,16 @@
 	font: normal 12px sans-serif;
 	padding: 5px;
 	margin-top: 15px;
-} 
+}
+
+.footer-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    z-index: 1000; /*Ensure footer is above other content */
+}
 
 .header{
 	background-color: #ebfcf1;

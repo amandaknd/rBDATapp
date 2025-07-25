@@ -3,36 +3,89 @@
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
 #' @import shiny
+#' @import bslib
+#' @import shinyWidgets
 #' @noRd
 app_ui <- function(request) {
-  # calling the translator sent as a golem option
-  #i18n <- golem::get_golem_options(which = "translator")
-  #i18n$set_translation_language("en")
-
-
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    tags$header(tags$style(type = 'text/css','.navbar { margin-bottom: 0px; }'),
-                includeCSS(app_sys("app/www/custom.css"))),
-    # Your application UI logic
-    fluidPage(
-      navbarPage(title = "Inventory data", windowTitle = "rBDATapp",
-                 footer = tagList(includeHTML(app_sys("app/www/include_footer.html"))),
-                 tabPanel("Data", mod_input_data_ui("input_data_1")),
-                 tabPanel("Charts", mod_histogram_ui("histogram_1")),
-                 tabPanel("Table", mod_table_ui("table_1")),
-                 tabPanel("Notation", mod_notation_ui("notation_1"))
-                 #navbarMenu("Language",
-                 #            radioButtons(inputId = 'selected_language',
-                #              "",
-                #              choices = i18n$get_languages(),
-                #              inline = TRUE,
-                #              selected = i18n$get_key_translation()))
-      )#end navbar page
+    page_navbar(
+      title = div(
+        tags$a(
+          href = "https://www.fva-bw.de/startseite",
+          target = "_blank",
+          tags$img(
+            src = "www/logo_fva.svg",
+            height = "50px",
+            style = "position: absolute; top: 50%; left: 8px; transform: translateY(-50%);"
+          )
+        ),
+        span("Inventory data",
+             style = "position: relative; margin-right: 50px; margin-left: 230px; top: 15px; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; padding: 0; font-size: 1.5rem;"),
+      ),
+      id = "tabs",
+      
+      # Panels
+      nav_spacer(),
+      nav_panel("Data", mod_input_data_ui("input_data_1")),
+      nav_panel("Charts", mod_histogram_ui("histogram_1")),
+      nav_panel("Table", mod_table_ui("table_1")),
+      nav_panel("Notation", mod_notation_ui("notation_1")),
+      
+      # Icons
+      nav_spacer(),
+      nav_item(
+        style = "zoom: 1.5;",
+        div(
+          tags$a(
+            shiny::icon("mastodon"),
+            href = "https://bawü.social/@FVABW", target = "_blank"
+          ),
+          tags$a(
+            shiny::icon("instagram"),
+            href = "https://www.instagram.com/fva_bw", target = "_blank"
+          ),
+          tags$a(
+            shiny::icon("youtube"),
+            href = "https://www.youtube.com/channel/UCxyaUkQwqig2zL_JG9OotCg", target = "_blank"
+          ),
+          tags$a(
+            shiny::icon("linkedin"),
+            href = "https://www.linkedin.com/company/fva-bw", target = "_blank"
+          )
+        )
+      ),
+      footer = tagList(
+        tags$div(
+          class = "footer-container",
+          conditionalPanel(
+            condition = "input.tabs != 'Karte'",
+            tags$footer(
+              div(class = "footer-left", "Anfragen und Hilfe: Christian.Vonderach@forst.bwl.de"),
+              div(class = "footer-right", HTML("Copyright © 2025"))
+            )
+          )
+        )
+      ),
 
-
-    )#end fluid page
+      # Design
+      theme = bslib::bs_theme(
+        version = 5,
+        bootswatch = "Minty",
+        primary = "#006E60",
+        secondary = "#D9C6B0",
+        tertiary = "#9D9D9D",
+        success = "#6CBC83",
+        info = "#17a2b8",
+        warning = "#F9A51B",
+        danger = "#C50F50",
+        brand = "inst/app/www/_brand.yml"
+      ),
+      lang = "de",
+      navbar_options = navbar_options(collapsible = TRUE,
+                                      underline = TRUE)
+    )
   )#end taglist
 }
 
@@ -48,10 +101,6 @@ golem_add_external_resources <- function() {
   add_resource_path(
     "www",
     app_sys("app/www")
-  )
-  
-  add_resource_path(
-    "sbs", system.file("www", package = "shinyBS")
   )
 
   tags$head(
