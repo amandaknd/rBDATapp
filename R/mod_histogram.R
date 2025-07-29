@@ -9,6 +9,7 @@
 #' @importFrom shiny NS tagList
 #' @importFrom dplyr %>%
 #' @import shinyBS
+#' @importFrom  graphics hist
 mod_histogram_ui <- function(id){
   ns <- NS(id)
   tagList(
@@ -54,7 +55,7 @@ mod_histogram_server <- function(id, data_input, selected_box){
         column(3, numericInput(ns("Zab"), "Zab:",0, min = 0), inline=TRUE,
                shinyBS::bsTooltip(ns("Zab"), title = "Minimum cutting diameter under bark for top segment [cm], defaults to 0, i.e. 14cm under bark", trigger = "hover")),
         column(3, numericInput(ns("Sokz"), "Sokz:", 1, min = 0, max = 2),
-               shinyBS::bsTooltip(ns("Sokz"), title = "Assortment calculation, 0 - no assortment, 1 - Mid diameter (Mittenstärke), 2 - Heilbronner Sortierung. Defaults to 1", trigger = "hover")),
+               shinyBS::bsTooltip(ns("Sokz"), title = "Assortment calculation, 0 - no assortment, 1 - Mid diameter (Mittenstaerke), 2 - Heilbronner Sortierung. Defaults to 1", trigger = "hover")),
         column(3, numericInput(ns("Az"), "Az:",0, min = 0),
                shinyBS::bsTooltip(ns("Az"), title = "Minimum cutting diameter over bark [cm]. Defaults to 0. Uses an exponential function given DBH", trigger = "hover")),
         column(3, numericInput(ns("fixN"), "fixN:",0, min = 0),

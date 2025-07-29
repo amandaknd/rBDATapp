@@ -39,10 +39,6 @@ app_ui <- function(request) {
         style = "zoom: 1.5;",
         div(
           tags$a(
-            shiny::icon("mastodon"),
-            href = "https://bawü.social/@FVABW", target = "_blank"
-          ),
-          tags$a(
             shiny::icon("instagram"),
             href = "https://www.instagram.com/fva_bw", target = "_blank"
           ),

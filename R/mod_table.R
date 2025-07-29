@@ -7,6 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
+#' @importFrom utils head read.csv write.table
 mod_table_ui <- function(id){
   ns <- NS(id)
   tagList(
@@ -86,7 +87,7 @@ mod_table_server <- function(id, df, data_input, selected_box){
       filename = function(){
         flnm <- data_input()
         flnm <- flnm$name
-        flnm <- strsplit(flnm, split="\\.")[[1]][1]
+        flnm <- strsplit(as.character(flnm), split="\\.")[[1]][1]
         paste0(flnm, "_extended.csv")
       },
       content = function(file) {
