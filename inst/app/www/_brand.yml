@@ -206,11 +206,11 @@ color:
 
 typography:
   base:
-    family: PT Sans
+    family: Arial
     line-height: 1.25
     
   headings:
-    family: PT Sans
+    family: Arial
     color: gray-dark
     
   monospace:
