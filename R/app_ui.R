@@ -58,8 +58,8 @@ app_ui <- function(request) {
           conditionalPanel(
             condition = "input.tabs != 'Karte'",
             tags$footer(
-              div(class = "footer-left", "Anfragen und Hilfe: Christian.Vonderach@forst.bwl.de"),
-              div(class = "footer-right", HTML("Copyright © 2025"))
+              div("Anfragen und Hilfe: Christian.Vonderach@forst.bwl.de"),
+              div(HTML("Copyright © 2025"))
             )
           )
         )
@@ -79,8 +79,7 @@ app_ui <- function(request) {
         brand = "inst/app/www/_brand.yml"
       ),
       lang = "de",
-      navbar_options = navbar_options(collapsible = TRUE,
-                                      underline = TRUE)
+      navbar_options = navbar_options(collapsible = TRUE, underline = TRUE)
     )
   )#end taglist
 }

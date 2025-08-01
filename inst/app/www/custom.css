@@ -1,22 +1,14 @@
-.footer{
-	background-color: #ebfcf1;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-	font: normal 12px Arial;
-	padding: 5px;
-	margin-top: 15px;
-}
-
 .footer-container {
+    background-color: #f8f9fa;
     position: fixed;
+    font: normal 15px sans-serif;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #f8f9fa;
+    padding: 10px 0 10px 20px; /* top, right, bottom, left */
     z-index: 1000; /*Ensure footer is above other content */
 }
+
 
 .header{
 	background-color: #ebfcf1;
@@ -24,9 +16,7 @@
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
-	font: normal 12px Arial;
+	font: normal 12px sans-serif;
 	padding: 5px;
 	margin-top: 15px;
 } 
-
-* { font-family: Arial; }

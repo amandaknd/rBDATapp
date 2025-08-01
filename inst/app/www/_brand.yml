@@ -214,7 +214,7 @@ typography:
     color: gray-dark
     
   monospace:
-    family: PT Sans
+    family: Fira Code
     
   link:
     color: primary
