@@ -70,7 +70,8 @@ mod_histogram_server <- function(id, data_input, selected_box){
                shinyBS::bsTooltip(ns("fixR"), title = "Fixed length assortement add-on in [%], defaults to 0", trigger = "hover")),
         column(3, numericInput(ns("Hsh"), "Hsh:",0, min = 0),
                shinyBS::bsTooltip(ns("Hsh"), title = "Maximum height of sawlog quality", trigger = "hover")),
-        column(12,"For deciduous species (spp >=15) you need to specify Hsh")
+        column(12,"For deciduous species (spp >=15) you need to specify Hsh"),
+        column(12, actionButton(ns("next2"), "Next"))
       )
     })
     

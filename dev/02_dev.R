@@ -32,6 +32,7 @@ golem::add_module(name = "input_data", with_test = TRUE)
 golem::add_module(name = "histogram", with_test = TRUE)
 golem::add_module(name = "table", with_test = TRUE)
 golem::add_module(name = "notation", with_test = TRUE)
+golem::add_module(name = "tabs", with_test = TRUE)
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*

@@ -20,9 +20,7 @@ app_ui <- function(request) {
             height = "50px",
             style = "position: absolute; top: 50%; left: 8px; transform: translateY(-50%);"
           )
-        ),
-        span("Inventory data",
-             style = "position: relative; margin-right: 50px; margin-left: 230px; top: 15px; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; padding: 0; font-size: 1.5rem;"),
+        )
       ),
       id = "tabs",
       
@@ -58,7 +56,7 @@ app_ui <- function(request) {
           conditionalPanel(
             condition = "input.tabs != 'Karte'",
             tags$footer(
-              div("Anfragen und Hilfe: Christian.Vonderach@forst.bwl.de"),
+              div("For information and help: Christian.Vonderach@forst.bwl.de"),
               div(HTML("Copyright © 2025"))
             )
           )

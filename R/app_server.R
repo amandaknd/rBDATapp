@@ -5,23 +5,19 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session) {
-  # calling the translator sent as a golem option
-  #i18n <- golem::get_golem_options(which = "translator")
-  #i18n$set_translation_language("en")
-
-  # keep track of language object as a reactive
-  #i18n_r <- reactive({
-  #  i18n #<- golem::get_golem_options(which = "translator")
-  #})
-
-  #observeEvent(input[["selected_language"]], {
-  #  shiny.i18n::update_lang(input[["selected_language"]], session)
-  #  i18n_r()$set_translation_language(input[["selected_language"]])
-  #})
+  
+  observeEvent(input$next1, {
+    updateNavbarPage(session, "tabs", selected = "Input data")
+  })
+  
+  observeEvent(input$next2, {
+    updateNavbarPage(session, "tabs", selected = "Soil data")
+  })
 
 
   # Your application server logic
   selected_box <- reactiveVal()
+  mod_tabs_server("tabs_1")
   data_input <- mod_input_data_server("input_data_1")
   df <- mod_histogram_server("histogram_1", data_input, selected_box)
   mod_table_server("table_1", df, data_input, selected_box)

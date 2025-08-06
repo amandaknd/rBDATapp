@@ -13,17 +13,17 @@ mod_input_data_ui <- function(id){
   tagList(
     fluidRow(
       h2(strong(("Tree Volume and Biomass estimation by rBDAT"))),
-      h4("Use the rBDAT package to get segment volume over or under bark for a tree given by species, Dbh, tree height and possibly an upper diameter. Assortment volume and aboveground biomass is calculated for further given specified parameters."),
-      tags$a(href="https://cran.r-project.org/web/packages/rBDAT/vignettes/rbdat.html","rBDAT documentation")
+      h4("Use the rBDAT package to get segment volume over or under bark for given trees by species, Dbh, tree height and possibly an upper diameter. Assortment volume and aboveground biomass is calculated for further given specified parameters."),
+      h4("Further information can be found here:", tags$a(href="https://cran.r-project.org/web/packages/rBDAT/vignettes/rbdat.html","rBDAT documentation"))
+      
     ),#end fluid row
     br(),
     fluidRow(
       sidebarLayout(
         sidebarPanel(
           h6("If you upload data here, this data will be processed on servers in the USA. Don't upload if this is a concern. No data is collected by the App itself and shinyapps.io state, that uploaded data is not stored permanently.
-             Further information can be found at"),
-          tags$a(href="https://docs.posit.co/shinyapps.io/guide/security_and_compliance/index.html", "Security and compliance"),
-          h6(),
+             Further information can be found at:", tags$a(href="https://docs.posit.co/shinyapps.io/guide/security_and_compliance/index.html", "Security and compliance")),
+          h6(strong("Upload your inventory data according to the requirements below")),
           fileInput(ns('target_upload'), 'Select csv/txt file to upload',
                     accept = c(
                       'text/csv',
@@ -40,7 +40,9 @@ mod_input_data_ui <- function(id){
           h6(strong("Optional variables:")),
           h6("H1: numeric, measuring height of D1; defaults to zero, i.e. 1.3m"),
           h6("D2: numeric, second/upper diameter"),
-          h6("H2: numeric, measuring height of second/upper diameter")
+          h6("H2: numeric, measuring height of second/upper diameter"),
+          actionButton(ns("next1"), "Next"),
+          h6(" ")
         ),#end sidebar panel
         mainPanel(
           sidebarLayout(
