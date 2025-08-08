@@ -10,7 +10,7 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    page_navbar(
+    navbarPage(
       title = div(
         tags$a(
           href = "https://www.fva-bw.de/startseite",
@@ -26,10 +26,10 @@ app_ui <- function(request) {
       
       # Panels
       nav_spacer(),
-      nav_panel("Data", mod_input_data_ui("input_data_1")),
-      nav_panel("Charts", mod_histogram_ui("histogram_1")),
-      nav_panel("Table", mod_table_ui("table_1")),
-      nav_panel("Notation", mod_notation_ui("notation_1")),
+      tabPanel("Data", mod_input_data_ui("input_data_1")),
+      tabPanel("Charts", mod_histogram_ui("histogram_1")),
+      tabPanel("Table", mod_table_ui("table_1")),
+      tabPanel("Notation", mod_notation_ui("notation_1")),
       
       # Icons
       nav_spacer(),

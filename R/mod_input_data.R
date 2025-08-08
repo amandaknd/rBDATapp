@@ -62,9 +62,9 @@ mod_input_data_ui <- function(id){
 #' input_data Server Functions
 #'
 #' @noRd
-mod_input_data_server <- function(id){
-  moduleServer( id, function(input, output, session){
-    ns <- session$ns
+mod_input_data_server <- function(id, session){
+  moduleServer( id, function(input, output, session_module){
+    ns <- session_module$ns
     
     data_input <- reactive({
       inFile <- input$target_upload
@@ -82,8 +82,13 @@ mod_input_data_server <- function(id){
     
     output$prev_table <- renderTable({head(data_input()$df)})
     
-    return(reactive(data_input()))
+
+    observeEvent(input$next1, {
+      # When Next button is pressed, switch to the "Charts" tab
+      updateNavbarPage(session, "tabs", selected = "Charts")
+    })
     
+    return(reactive(data_input()))
     
   })
   

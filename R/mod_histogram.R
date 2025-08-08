@@ -40,9 +40,9 @@ mod_histogram_ui <- function(id){
 #' histogram Server Functions
 #'
 #' @noRd
-mod_histogram_server <- function(id, data_input, selected_box){
-  moduleServer( id, function(input, output, session){
-    ns <- session$ns
+mod_histogram_server <- function(id, data_input, selected_box, session){
+  moduleServer( id, function(input, output, session_module){
+    ns <- session_module$ns
     require(TapeS)
     #library(dplyr)
     
@@ -148,6 +148,11 @@ mod_histogram_server <- function(id, data_input, selected_box){
       if(!is.null(tree) && currentPlotIndex() <= ranges){
         generatePlot(tree, assort, currentPlotIndex(), n)
       }
+    })
+    
+    observeEvent(input$next2, {
+      # When Next button is pressed, switch to the "Table" tab
+      updateNavbarPage(session, "tabs", selected = "Table")
     })
 
     #return(reactive(data_upload()$df))
