@@ -53,12 +53,9 @@ app_ui <- function(request) {
       footer = tagList(
         tags$div(
           class = "footer-container",
-          conditionalPanel(
-            condition = "input.tabs != 'Karte'",
-            tags$footer(
-              div("For information and help: Christian.Vonderach@forst.bwl.de"),
-              div(HTML("Copyright © 2025"))
-            )
+          tags$footer(
+            div("For information and help: Christian.Vonderach@forst.bwl.de"),
+            div(HTML("Copyright © 2025"))
           )
         )
       ),

@@ -1,25 +1,24 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
 .footer-container {
-    background-color: #f8f9fa;
-    position: fixed;
-    font: normal 15px Arial;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0 10px 20px; /* top, right, bottom, left */
-    z-index: 1000; /*Ensure footer is above other content */
+  background-color: #f8f9fa;
+  font: normal 15px Arial;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+  margin-top: 30px; 
+  /* No fixed positioning needed */
 }
 
 
-.header{
-	background-color: #ebfcf1;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-	font: normal 12px Arial;
-	padding: 5px;
-	margin-top: 15px;
-} 
 
 .text {
      font-family: Arial;
