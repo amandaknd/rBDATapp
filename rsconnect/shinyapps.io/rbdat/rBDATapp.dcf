@@ -5,7 +5,7 @@ account: rbdat
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12234624
-bundleId: 10745734
+bundleId: 10776293
 url: https://rbdat.shinyapps.io/rBDATapp/
 version: 1
 asMultiple: FALSE
